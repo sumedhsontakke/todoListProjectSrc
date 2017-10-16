@@ -1,0 +1,51 @@
+<ion-menu [content]="content" side="right">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{menuTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-footer *ngIf="showFooter">
+  <ion-grid *ngIf="colSize == 'col-3'; else elseBlock"  class="four-tabs-grid">
+    <ion-row>
+      <ion-col col-3  *ngFor="let tabs1 of footerTabsList" class="tabs">
+        <ion-toolbar>
+          <ion-title (click)="footerbarclick($event, tabs1.component)">
+            <img class="footer-icon" [src]="tabs1.imgSrc" /> <span>{{tabs1.text}}</span></ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+  <ng-template #elseBlock>
+  <ion-grid>
+      <ion-row>
+        <ion-col col-4 *ngFor="let tabs of footerTabsList" class="tabs">
+          <ion-toolbar>
+            <ion-title (click)="footerbarclick($event, tabs.component)">
+              <img class="footer-icon" [src]="tabs.imgSrc" />  <span>{{tabs.text}} </span></ion-title>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+  </ng-template>
+</ion-footer>
+
+
+<!-- <ion-tabs>
+    <ion-tab tabIcon="call" [root]="tabOne" tabBadge="3" tabBadgeStyle="danger">sadfsadf</ion-tab>
+    <ion-tab tabIcon="chatbubbles" [root]="tabTwo" tabBadge="14" tabBadgeStyle="danger">asdfasdf</ion-tab>
+    <ion-tab tabIcon="musical-notes" [root]="tabthree">asdfasdf</ion-tab>
+    
+  </ion-tabs> -->
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

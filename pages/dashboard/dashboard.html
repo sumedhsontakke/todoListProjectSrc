@@ -1,0 +1,53 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>User List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <div *ngFor = "let obj of users">
+    <ion-card>
+      <ion-card-header>
+        User Description
+      </ion-card-header>
+      <ion-card-content padding-top class="desc-data"> 
+        <div>
+          <ion-icon class="icons-list" name="person"></ion-icon>
+          {{obj.name}}
+        </div>
+        <div>
+          <ion-icon class="icons-list" name="mail"></ion-icon>
+          {{obj.email}}
+        </div>
+        <div>
+          <ion-icon class="icons-list" name="home"></ion-icon>
+          {{obj.address.suite}}, {{ obj.address.street}}, {{obj.address.city}}, {{obj.address.zipcode}}
+        </div>
+        <div>
+          <ion-icon class="icons-list" name="call"></ion-icon>
+          {{obj.phone}}
+        </div>
+        <div>
+          <ion-icon class="icons-list" name="cloud-done"></ion-icon>
+          {{obj.website}}
+        </div> 
+        <div>
+          <ion-icon class="icons-list" name="logo-buffer"></ion-icon>
+          {{obj.company.name}}
+        </div>        
+        <div>
+        <button margin-top margin-bottom (click)="userSelect(obj)"  ion-button>View Todos</button>  
+        </div>  
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,60 @@
+<!--
+  Generated template for the TodoListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>todoList</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+
+  </div>
+  <ion-card *ngFor="let value of todoList">
+
+    <ion-card-header>
+      Todo
+    </ion-card-header>
+
+    <ion-card-content padding>
+      <div>
+        Title: {{value.title}}
+      </div>
+      <div>
+       
+        <ion-item class="border">
+            <ion-label>Complete Status</ion-label>
+            <ion-checkbox color="dark" [checked]="value.completed" [(ngModel)]="value.completed" (click)="updateDb(todoList)"></ion-checkbox>
+          </ion-item>        
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+        <ion-col col-10>
+            <ion-item>
+                <ion-label fixed>Create new todo</ion-label>
+                <ion-input type="text" [(ngModel)]="add" value=""></ion-input>
+              </ion-item>            
+          </ion-col>      
+      <ion-col col-2>
+          <button ion-button icon-only (click)="addNewTodo()" [disabled]='add == ""'>
+              <ion-icon name="add"></ion-icon>
+            </button>
+              
+      </ion-col>
+     </ion-row> 
+  </ion-toolbar>
+</ion-footer>
